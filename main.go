@@ -3,7 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/azimjohn/cfc.live/jprq"
+	"github.com/coffin-sys/cfc.live/cfc"
 	"github.com/gorilla/mux"
 	"github.com/labstack/gommon/log"
 	"net/http"
@@ -15,7 +15,7 @@ func main() {
 	flag.StringVar(&baseHost, "host", "cfc.live", "Base Host")
 	flag.Parse()
 
-	j := jprq.New(baseHost)
+	j := cfc.New(baseHost)
 	r := mux.NewRouter()
 	r.HandleFunc("/_ws/", j.WebsocketHandler)
 	r.PathPrefix("/").HandlerFunc(j.HttpHandler)
